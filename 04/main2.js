@@ -17,7 +17,6 @@ function main()
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
     
-
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( width, height );
     document.body.appendChild( renderer.domElement );
