@@ -13,7 +13,7 @@ function main()
     camera.position.set( 0, 0, 5 );
     scene.add( camera );
     
-    var light = new THREE.PointLight(0xfffff00);
+    var light = new THREE.PointLight(0xfffffff);
     light.position.set(1,1,1);
     scene.add( light );
 
