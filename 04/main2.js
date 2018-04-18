@@ -5,9 +5,9 @@ function main()
 
     var scene = new THREE.Scene();
     
-    var light = new THREE.PointLight( 0xfffffff );
-    light.position.set( 1, 1, 1);
-    scene.add( light );
+    //var light = new THREE.PointLight( 0xfffffff );
+    //light.position.set( 1, 1, 1);
+    //scene.add( light );
 
     var fov = 45;
     var aspect = width / height;
@@ -23,7 +23,7 @@ function main()
     document.body.appendChild( renderer.domElement );
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshLamberMaterial( { color: 0xffffff } );
+    var material = new THREE.THREE.MeshBasicMaterial( { color: 0xffffff } );
     var cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
