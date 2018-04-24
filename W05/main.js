@@ -49,7 +49,7 @@ function main()
 
     var geometry = new THREE.Geometry();
     var material = new THREE.MeshLambertMaterial();
-
+    
     var nvertices = vertices.length;
     for ( var i = 0; i < nvertices; i++ )
     {
@@ -65,11 +65,12 @@ function main()
         geometry.faces.push( face );
     }
 
-    material.vertexColors = THREE.FaceColors;
-    for ( var i = 0; i < nfaces; i++ )
-    {
-        geometry.faces[i].color = new THREE.Color( 1, 1, 1 );
-    }
+    //material.vertexColors = THREE.FaceColors;
+    //for ( var i = 0; i < nfaces; i++ )
+    //{
+    //    geometry.faces[i].color = new THREE.Color( 1, 1, 1 );
+    //}
+    material.side = THREE.DoubleSide;
 
     geometry.computeFaceNormals();
 
