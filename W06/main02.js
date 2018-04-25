@@ -1,26 +1,43 @@
-<html>
-    <head>
-	<title>W06: Example 02</title>
-    </head>
-    <body>
-	<script src="https://threejs.org/build/three.min.js"></script>
+function main()
+{
+    var width = 500;
+    var height = 500;
 
-	<script type="x-shader/x-vertex" id="shader.vert">
-	 void main()
-	 {
-	     gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-	 }
-	</script>
+    var scene = new THREE.Scene();
 
-	<script type="x-shader/x-fragment" id="shader.frag">
-	 void main()
-	 {
-	     gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
-	 }
-	</script>
-	<script src="main02.js"></script>
-	<script>
-	 main();
-	</script>
-    </body>
-</html>
+    var fov = 45;
+    var aspect = width / height;
+    var near = 1;
+    var far = 1000;
+    var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+    camera.position.set( 0, 0, 5 );
+    scene.add( camera );
+
+    var light = new THREE.PointLight();
+    light.position.set( 5, 5, 5 );
+    scene.add( light );
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( width, height );
+    document.body.appendChild( renderer.domElement );
+
+    var geometry = new THREE.TorusKnotGeometry( 1, 0.3, 100, 20 );
+    var material = new THREE.ShaderMaterial({
+        vertexColors: THREE.VertexColors,
+        vertexShader: document.getElementById('shader.vert').text,
+        fragmentShader: document.getElementById('shader.frag').text,
+    });
+
+    var torus_knot = new THREE.Mesh( geometry, material );
+    scene.add( torus_knot );
+
+    loop();
+
+    function loop()
+    {
+        requestAnimationFrame( loop );
+        torus_knot.rotation.x += 0.01;
+        torus_knot.rotation.y += 0.01;
+        renderer.render( scene, camera );
+    }
+}
