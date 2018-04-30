@@ -59,8 +59,8 @@ function main()
 
     loop();
 
-    var screen_width = window.innerWidth;
-    var screen_height = window.innerHeight;
+    var screen_width = 1000;
+    var screen_height = 500;
 
     renderer.setSize( screen_width, screen_height);
     camera_left.aspect = 0.5 * screen_width / screen_height;
