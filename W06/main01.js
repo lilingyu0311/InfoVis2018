@@ -25,8 +25,8 @@ function main()
     //var material = new THREE.MeshLambertMaterial();
     var material = new THREE.ShaderMaterial({
          vertexColors: THREE.VertexColors,
-         vertexShader: document.getElementById('gouraud.vert').text, 
-         fragmentShader: document.getElementById('gouraud.frag').text, 
+         vertexShader: document.getElementById('lambertian.vert').text, 
+         fragmentShader: document.getElementById('lambertian.frag').text, 
          uniforms: {
            light_position: { type: 'v3', value: light.position } 
          }
