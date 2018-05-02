@@ -88,18 +88,14 @@ function main()
     for ( var i = 0; i < nfaces; i++ )
     {
         var id = faces[i];
-        var S0 = scalars[ id[0] ];
-        var S1 = scalars[ id[1] ];
-        var S2 = scalars[ id[2] ];
-        /*
+        // 変更
+        var S0 = Math.round((scalars[ id[0] ] - S_min )/(S_max-S_min) * 255.0);
+        var S1 = Math.round((scalars[ id[1] ] - S_min )/(S_max-S_min) * 255.0);
+        var S2 = Math.round((scalars[ id[2] ] - S_min )/(S_max-S_min) * 255.0);
+        
         var C0 = new THREE.Color().setHex( cmap[ S0 ][1] );
         var C1 = new THREE.Color().setHex( cmap[ S1 ][1] );
         var C2 = new THREE.Color().setHex( cmap[ S2 ][1] );
-        */
-        // 追加
-        var C0 = GetColor(S0,S_min,S_max,cmap);
-        var C1 = GetColor(S1,S_min,S_max,cmap);
-        var C2 = GetColor(S2,S_min,S_max,cmap);
         geometry.faces[i].vertexColors.push( C0 );
         geometry.faces[i].vertexColors.push( C1 );
         geometry.faces[i].vertexColors.push( C2 );
@@ -116,26 +112,4 @@ function main()
         renderer.render( scene, camera );
     }
 
-    // Task 追加
-    function GetColor(S,S_min,S_max,cmap) {
-      var resolution = cmap.length
-      var index = Normalize(S,S_min,S_max)*(resolution-1);
-      var index0 = Math.floor(index);
-      var index1 = Math.min(index0+1,resolution-1);
-      var t = index - index0; // t = (index-index0)/(index1-index0)
-      var C0 = new THREE.Color().setHex( cmap[ index0 ][1] );
-      var C1 = new THREE.Color().setHex( cmap[ index1 ][1] );
-      var R = Interpolate(C0.r,C1.r,t);
-      var G = Interpolate(C0.g,C1.g,t);
-      var B = Interpolate(C0.b,C1.b,t);
-      return new THREE.Color(R,G,B);
-    }
-
-    function Normalize(S,S_min,S_max){ // e.g. S:0.1~0.8 -> S:0~1
-      return (S-S_min)/(S_max-S_min);
-    }
-
-    function Interpolate(S0,S1,t){
-      return (1-t)*S0+t*S1;
-    }
 }
