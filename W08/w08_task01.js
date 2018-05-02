@@ -85,18 +85,14 @@ function main()
     for ( var i = 0; i < nfaces; i++ )
     {
         var id = faces[i];
-        var S0 = scalars[ id[0] ];
-        var S1 = scalars[ id[1] ];
-        var S2 = scalars[ id[2] ];
-        /*
+        // 変更
+        var S0 = Math.round((scalars[ id[0] ] - S_min )/(S_max-S_min) * 255.0);
+        var S1 = Math.round((scalars[ id[1] ] - S_min )/(S_max-S_min) * 255.0);
+        var S2 = Math.round((scalars[ id[2] ] - S_min )/(S_max-S_min) * 255.0);
+        
         var C0 = new THREE.Color().setHex( cmap[ S0 ][1] );
         var C1 = new THREE.Color().setHex( cmap[ S1 ][1] );
         var C2 = new THREE.Color().setHex( cmap[ S2 ][1] );
-        */
-        // 追加
-        var C0 = GetColor(S0,S_min,S_max,cmap); 
-        var C1 = GetColor(S1,S_min,S_max,cmap); 
-        var C2 = GetColor(S2,S_min,S_max,cmap); 
         geometry.faces[i].vertexColors.push( C0 );
         geometry.faces[i].vertexColors.push( C1 );
         geometry.faces[i].vertexColors.push( C2 );
