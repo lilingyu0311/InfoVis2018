@@ -81,7 +81,6 @@ function Isosurfaces( volume, isovalue )
         cmap.push( [ S, '0x' + color.getHexString() ] );
     }
     
-    
     material.color = new THREE.Color().setHex(cmap[isovalue][1]);
     //*************** Task1 End ******************
     
