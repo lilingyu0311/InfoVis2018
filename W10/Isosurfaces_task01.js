@@ -65,8 +65,7 @@ function Isosurfaces( volume, isovalue )
 
     geometry.computeVertexNormals();
 
-    //task1
-    //<<<<<<<<<< add >>>>>>>>>>>>>
+    // ************* task1 Start *****************
     //Create color map
     var cmap = [];
     var RESOLUTION = 256;
@@ -84,8 +83,7 @@ function Isosurfaces( volume, isovalue )
     
     
     material.color = new THREE.Color().setHex(cmap[isovalue][1]);
-     //<<<<<<<<<< /add >>>>>>>>>>>>>
-
+    // ************* task1 End *****************
     
     return new THREE.Mesh( geometry, material );
 
