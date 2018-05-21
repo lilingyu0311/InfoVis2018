@@ -65,9 +65,10 @@ function Isosurfaces( volume, isovalue )
     // *****Task01 Modify Start*****
     // Create a color map
     var cmap = [];
-    for ( var i = 0; i < 256; i++ )
+    var RESOLUTION = 256;
+    for ( var i = 0; i < RESOLUTION; i++ )
     {
-        var S = i / 255.0; // [0,1]
+        var S = i / (RESOLUTION-1); // [0,1]
         var R = Math.max( Math.cos( ( S - 1.0 ) * Math.PI ), 0.0 );
         var G = Math.max( Math.cos( ( S - 0.5 ) * Math.PI ), 0.0 );
         var B = Math.max( Math.cos( S * Math.PI ), 0.0 );
