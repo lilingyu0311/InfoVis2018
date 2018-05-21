@@ -1,7 +1,6 @@
 function Isosurfaces( volume, isovalue ,screen)
 {
-    
-  
+   
     var geometry = new THREE.Geometry();
   
     var smin = volume.min_value;
@@ -148,4 +147,4 @@ function Isosurfaces( volume, isovalue ,screen)
 	return new THREE.Vector3().addVectors( v0.multiplyScalar(1-t), v1.multiplyScalar(t)); 
     }
     //************** Task2 End ********************
-}/
+}
