@@ -85,17 +85,27 @@ function main()
       screen.scene.add(surfaces);
     })
      */
+     /* changeMeterial：　2:phong_Btn */
+     /*
+     $('#phong_Btn').on('click', function(){
+       meterial_val = "2";
+       screen.scene.remove(surfaces);
+       changeMeterial(meterial_val);
+       surfaces = Isosurfaces(volume, isovalue);
+       screen.scene.add(surfaces);
+     })
+     */
     /* changeMeterial：　1:Normal_Btn */
-    $('#Normal_Btn').on('click', function(){
-      meterial_val = "1";
+    $('#Lambert_Btn').on('click', function(){
+      meterial_val = "0";
       screen.scene.remove(surfaces);
       changeMeterial(meterial_val);
       surfaces = Isosurfaces(volume, isovalue);
       screen.scene.add(surfaces);
     })
-    /* changeMeterial：　2:phong_Btn */
-    $('#phong_Btn').on('click', function(){
-      meterial_val = "2";
+    /* changeMeterial：　1:Normal_Btn */
+    $('#Normal_Btn').on('click', function(){
+      meterial_val = "1";
       screen.scene.remove(surfaces);
       changeMeterial(meterial_val);
       surfaces = Isosurfaces(volume, isovalue);
