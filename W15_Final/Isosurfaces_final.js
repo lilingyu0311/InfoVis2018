@@ -45,6 +45,7 @@ function changeColor_G(g) {
 /* changeMeterial */
 function changeMeterial(meterial_val) {
   if ("1" == meterial_val) {
+    /*
     material = new THREE.ShaderMaterial({
 	                vertexColors: THREE.VertexColors,
 	                vertexShader: document.getElementById('lambertian.vert').text,
@@ -52,7 +53,8 @@ function changeMeterial(meterial_val) {
 	                uniforms: {
 	                  light_position: {type: 'v3',value: light.position},
                 	}
-    });
+    });*/
+    material = new THREE.MeshNormalMaterial();
   } else if ("2" == meterial_val) {
     material = new THREE.ShaderMaterial({
 	               vertexColors: THREE.VertexColors,
