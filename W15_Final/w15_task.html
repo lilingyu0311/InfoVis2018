@@ -1,0 +1,108 @@
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <title>Final Task</title>
+    <!-- Custom styles for this template -->
+	  <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div id="div_title">
+      <div class="h_title">Visualization Application</div>
+      <div class="h_name">
+        学籍番号：182x031x<br>
+        氏　　名：李　玲玉
+      </div>
+    </div>
+
+    <div id="entirety">
+      <!-- visualization -->
+      <div id="display">
+      </div>
+      <!-- Functions -->
+      <div id="controller">
+        <!-- isovalue -->
+        <div id="div_isovalue">
+          <label id="lb_isovalue" style="font-family:Arial;font-size:14px;">Isovalue</label><br>
+          <input id="isovalue_change" type="range" min="0" max="255" step="1" value="128"/>
+          <span id="isovalue_val"></span>
+        </div>
+        <!-- Color -->
+        <div id="div_changeColor">
+          <label id="lb_color" style="font-family:Arial;font-size:14px;">Color</label><br>
+          <input id="color_R" type="range" min="0" max="255" step="1" value="150"/>
+          <span id="color_R_val"></span><br>
+          <input id="color_G" type="range" min="0" max="255" step="1" value="20"/>
+          <span id="color_G_val"></span><br>
+          <input id="color_B" type="range" min="0" max="255" step="1" value="20"/>
+          <span id="color_B_val"></span><br>
+        </div>
+        <!-- changeMeterial -->
+        <div id="div_shader">
+          <input id="lambertian_Btn" type="button" value="lambertian"/>
+          <input id="phong_Btn" type="button" value="phong"/>
+        </div>
+
+        <!-- Reset Button -->
+        <div id="div_ResetBtn">
+          <input id="Reset_Btn" type="button" value="Reset"/>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="three.min.js"></script>
+    <script src="https://threejs.org/examples/js/math/Lut.js"></script>
+    <script src="http://naohisas.github.io/KVS.js/Build/TrackballControls.js"></script>
+    <script src="http://naohisas.github.io/KVS.js/Build/KVS.min.js"></script>
+    <script src="http://naohisas.github.io/KVS.js/Build/KVS2THREE.min.js"></script>
+    <script src="http://naohisas.github.io/KVS.js/Source/KVSLobsterData.js"></script>
+    <script src="http://naohisas.github.io/KVS.js/Source/KVSSingleCubeData.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+    <script src="Bounds.js"></script>
+    <script src="Isosurfaces_final.js"></script>
+    <script src="main.js"></script>
+    <!-- Legt : lambertian -->
+    <script type="x-shader/x-vertex" id="lambertian.vert">
+    	varying vec3 point_color;
+    	varying vec4 point_position;
+    	varying vec3 normal_vector;
+    	void main() {
+    	  point_position = modelViewMatrix * vec4(position, 1.0);
+    	  normal_vector = normalMatrix * normal;
+    	  gl_Position = projectionMatrix * point_position;
+    	}
+    </script>
+    <script type="x-shader/x-fragment" id="lambertian.frag">
+    	varying vec3 point_color;
+
+    	void main() {
+    	gl_FragColor = vec4(point_color,4.0);
+    	}
+    </script>
+
+    <!-- Right : phong -->
+    <script type="x-shader/x-vertex" id="phong.vert">
+    	varying vec3 point_color;
+    	varying vec4 point_position;
+    	varying vec3 normal_vector;
+
+    	void main() {
+    	point_position = modelViewMatrix * vec4(position, 1.0);
+    	normal_vector = normalMatrix * normal;
+    	gl_Position = projectionMatrix * point_position;
+    	}
+    </script>
+    <script type="x-shader/x-fragment" id="phong.frag">
+    	varying vec3 point_color;
+
+    	void main() {
+    	gl_FragColor = vec4(point_color,5.0);
+    	}
+    </script>
+
+    <script>main()</script>
+  </body>
+
+</html>
