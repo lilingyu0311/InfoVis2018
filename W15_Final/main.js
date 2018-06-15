@@ -76,7 +76,17 @@ function main()
     });
 
     /* changeMeterial：　1:lambertian_Btn */
+    /*
     $('#lambertian_Btn').on('click', function(){
+      meterial_val = "1";
+      screen.scene.remove(surfaces);
+      changeMeterial(meterial_val);
+      surfaces = Isosurfaces(volume, isovalue);
+      screen.scene.add(surfaces);
+    })
+     */
+    /* changeMeterial：　1:Normal_Btn */
+    $('#Normal_Btn').on('click', function(){
       meterial_val = "1";
       screen.scene.remove(surfaces);
       changeMeterial(meterial_val);
